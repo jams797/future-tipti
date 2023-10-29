@@ -1,0 +1,26 @@
+#cardElements{
+    padding: 10px;
+}
+
+.itemCard{
+    border: solid 1px rgb(224, 224, 224);
+    background-color: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#TotalShow{
+    margin-top: 20px;
+}
+
+.subItemCardPrincipal{
+    width: 100%;
+}
+.subItemCard{
+    width: 100px;
+}
+
+#pp-button{
+    text-align: center;
+}

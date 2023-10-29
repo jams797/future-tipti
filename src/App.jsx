@@ -1,16 +1,27 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Proj from './Proj'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import { Router, Link } from '@reach/router';
+import { Proj } from './Proj'
+import { Card } from './Card'
+import { IndexPage } from './IndexPage';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route path="/" element={<Proj />}>
+    //       <Route path="index" element={<Proj />} />
+    //       <Route path="card" element={<Tmp />} />
+    //     </Route>
+    //   </Routes>
+    // </BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/" element={<Proj />}>
-          <Route path="index" element={<Proj />} />
-        </Route>
+        <Route path="/" exact element={<IndexPage />} />
+        <Route path="product" element={<Proj />} />
+        <Route path="card" element={<Card />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   )
 }
 

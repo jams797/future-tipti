@@ -90,7 +90,7 @@ const NavScrollExample = forwardRef((props, ref) => {
     <>
     <Navbar bg="light" expand="lg" sticky="top">
       <Container fluid>
-        <Navbar.Brand href="#">OneStop  </Navbar.Brand>
+        <Navbar.Brand href="#"><img style={{width: '50px',}} src={require('../../src/images/logo_tipti.png')} />  </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -98,54 +98,14 @@ const NavScrollExample = forwardRef((props, ref) => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="/index">Home</Nav.Link>
-            <Nav.Link href="/card">Card</Nav.Link>
-            <Nav.Link href="#action2">Sell</Nav.Link>
-            <NavDropdown title="My Onestop" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Recently Viewed</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action4">
-                My Onestop Summary
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Purchase History
-              </NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown title="Shop by category" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Electronics</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action4">
-                Clothes and Accessories
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-               Sports
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-               Toys
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-               Health & Beauty
-              </NavDropdown.Item>
-             
-            </NavDropdown>
+            <Nav.Link href="/">Inicio</Nav.Link>
+            <Nav.Link href="/product">Productos</Nav.Link>
+            
             <Nav.Link href="/card">
               <FaShoppingCart />
               <Badge bg="danger">{num}</Badge>
             </Nav.Link>
           </Nav>
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -235,7 +235,7 @@ padding: 0.5% 0.5% 2% 0.5%;
 
 
 
-function Proj() {
+export const Proj = () => {
 
   const ChildRef = useRef();
 
@@ -326,7 +326,7 @@ function Proj() {
             <Title>iPhone 13 Pro</Title>
             <Description>$700</Description>
             <Button
-           onClick={()=>ChildRef.current.addToCart()}
+           onClick={()=>ChildRef.current.addToCart(2)}
             >
               Add to Cart
               </Button>
@@ -350,7 +350,7 @@ function Proj() {
             <Title>Kogan Curved Monitor</Title>
             <Description>$400</Description>
             <Button
-           onClick={()=>ChildRef.current.addToCart()}
+           onClick={()=>ChildRef.current.addToCart(3)}
             >
               Add to Cart
               </Button>
@@ -373,7 +373,7 @@ function Proj() {
             <Title>Samsung 85 smart</Title>
             <Description>$3000</Description>
             <Button
-             onClick={()=>ChildRef.current.addToCart()}
+             onClick={()=>ChildRef.current.addToCart(4)}
             >
               Add to Cart
               </Button>
@@ -504,5 +504,3 @@ function Proj() {
 
   );
 }
-
-export default Proj

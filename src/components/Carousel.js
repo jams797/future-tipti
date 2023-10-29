@@ -1,9 +1,29 @@
 import Carousel from 'react-bootstrap/Carousel';
 
 function IndividualIntervalsExample() {
+  const listBanner = [
+    '1.png',
+    '2.png',
+    '3.jpg',
+    '4.jpg',
+    '5.jpg',
+    '6.gif',
+  ];
+
   return (
     <Carousel>
-      <Carousel.Item interval={1999}>
+      {
+        listBanner.map((element, index) => {
+          return <Carousel.Item interval={2000}>
+            <img
+              className="d-block w-100"
+              src={require('../images/tipti-banner/' + element)}
+            />
+            
+          </Carousel.Item>
+        })
+      }
+      {/* <Carousel.Item interval={1999}>
         <img
           className="d-block w-100"
           src={require("../images/firstimgcar.png")}
@@ -26,7 +46,7 @@ function IndividualIntervalsExample() {
           alt="Third slide"
         />
         
-      </Carousel.Item>
+      </Carousel.Item> */}
     </Carousel>
   );
 }

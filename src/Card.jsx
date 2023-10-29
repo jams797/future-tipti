@@ -1,22 +1,18 @@
-import React, {Suspense} from 'react'
+import React, { Suspense } from 'react'
 
 import TextSection from './components/textSection';
-import {Canvas} from '@react-three/fiber';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useState, useRef} from 'react'
+import { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components';
-import { OrbitControls } from '@react-three/drei';
 import Navbar from './components/Navbar';
-import Tv from './components/Tv';
-import Carousel from './components/Carousel';
-import Chat from './components/Chat';
-import Monitor from './components/Monitor';
-import Iphone13 from './components/Iphone13';
-import Pooltable from './components/Pooltable';
-import Guitar from './components/Guitar';
-import Shoes from './components/Shoes';
-import Smarttv from './components/Smarttv';
-import Laptop from './components/Laptop';
+
+import { MdAttachMoney } from 'react-icons/md';
+
+import './CardPage.css';
+
+import { ProductsParam } from './ProductsParam';
+
+import 'https://pay.payphonetodoesposible.com/api/button/js?appId=Y6rwoLBYJk6Zr9ay99Sog';
 
 
 const Wrapper = styled.div`
@@ -235,274 +231,125 @@ padding: 0.5% 0.5% 2% 0.5%;
 
 
 
-function Card() {
+export const Card = () => {
+
+  const uuidv4 = () => {
+    return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
+  }
+
+  const loadPayPhone = (tot = null) => {
+    window.payphone.Button({
+
+      //token obtenido desde la consola de developer
+      token: "gyqiVsoY7OBDN-eif8FyT2kkebXy0xqp6D4Yp3wGGCnxdxt0GE5WGRHGA0R7GvLnjdJ0SqF-JYPbc0NeXj9XD4whFmeo8OpLtqAoaaRxRaEOxY8QuFf5igDq1SsFwO6ZnBE0th2e8mSSwmzpBxC1pPOu9g3n2DEmkExMU9z0mjYa5ZrM67mCh7jGeauqjk50H1cHfPllVVEpAkycPkANyWKVSMS3p82Jr2bqpNjyJ7-NE7Cn4flTTSow-lOIil8UFPvGJj2P0FOkbXVdaclU9e9TftABLPMxNVl9yhqozbWTfBgobegC5rc8wc-4cKRgNDYt9w",
+
+      //PARÁMETROS DE CONFIGURACIÓN
+      btnHorizontal: true,
+      btnCard: true,
+
+      createOrder: function (actions) {
+        //Se ingresan los datos de la transaccion ej. monto, impuestos, etc
+
+        const totSend = parseInt((tot == null ? totalShow : tot) + '00');
+
+        console.log('totalShow',totSend);
+
+        return actions.prepare({
+
+            amount: totSend,
+            amountWithoutTax: totSend,
+            currency: "USD",
+            clientTransactionId: uuidv4(),//"22222",
+            lang: "es"
+
+        }).then(function (paramlog) {
+          console.log("THEN");
+          console.log(paramlog);
+          return paramlog;
+        }).catch(function (paramlog2) {
+            console.log("CATCH");
+            console.log(paramlog2);
+            return paramlog2;
+        });
+      },
+
+      onComplete: function (model, actions) {
+        console.log("Modelo:");
+        console.log(model);
+      }
+    }).render("#pp-button");
+  }
 
   const ChildRef = useRef();
 
- 
+  const [listCard, setListCard] = useState([]);
 
-  
+  const [totalShow, setTotalShow] = useState(0.0);
+
+  const loadData = () => {
+    const listData = localStorage.getItem('listData');
+    const jsonData = JSON.parse(listData);
+    setListCard(jsonData);
+
+    let sumT = 0;
+
+    jsonData.forEach((element, index) => {
+      const obj = ProductsParam.find(e => e.id === element.id);
+      const sum = obj.value * element.cant;
+      console.log(element);
+      console.log(obj);
+      console.log(sum);
+      setTotalShow(sum);
+      sumT = sum;
+    });
+
+    loadPayPhone(sumT);
+    console.log('payphone', window.payphone);
+  }
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
+
   return (
-    <Wrapper> 
-     
-        <Navbar ref={ChildRef}/>
-      <Carousel/>
-        <TextSection/>
+    <Wrapper>
+      <Navbar ref={ChildRef} />
 
-        <Catatory>
-        <Title>Shop by Catagory  →</Title>
-        </Catatory>
-      <CatagoryContainer>
-        <CatagoryItem>
-        <img src={require('../src/images/Appliances.png')} alt="Appliance" />
-       
-        </CatagoryItem>
-        <CatagoryItem>
-        <img src={require('../src/images/Alcohol.png')} alt="Alcohol" />
-        </CatagoryItem>
-        <CatagoryItem>
-        <img src={require('../src/images/Ellipse 1.png')} alt="Dress" />
-        </CatagoryItem>
-        <CatagoryItem>
-        <img src={require('../src/images/Baby.png')} alt="Dress" />
-        </CatagoryItem>
-        <CatagoryItem>
-        <img src={require('../src/images/Headphone.png')} alt="Dress" />
-        </CatagoryItem>
-        <CatagoryItem>
-        <img src={require('../src/images/Shoes.png')} alt="Dress" />
-        </CatagoryItem>
-        <CatagoryItem>
-        <img src={require('../src/images/Ball.png')} alt="Dress" />
-        </CatagoryItem>
-
-     
-
-      </CatagoryContainer>
-      
       <Catatory>
-        <Title>Electronics  → </Title>
-        </Catatory>
-        <Body>
-      
-        <ProductContainer>
-          <Product>
-           <Canvas className='canvas'>
-            <OrbitControls enableZoom={true}/>
-            <ambientLight intensity={2}/>
-            <pointLight position={[-2, 5, 2]} intensity={1}/>
-            <Suspense fallback={null}>
-
-            <Tv/>
-        
-            </Suspense>
-           </Canvas>   
-           <ProductDesc>
-            <Title>Oldschool Nintendo </Title>
-            <Description>$140</Description>
-            <Button
-            onClick={()=>ChildRef.current.addToCart(1)}
-            >
-              Add to Cart
-              </Button>
-            </ProductDesc> 
-            
-           
-            </Product>
-
-            <Product>
-           <Canvas className='canvas'>
-            <OrbitControls enableZoom={true}/>
-            <ambientLight intensity={2}/>
-            <pointLight position={[-2, 5, 2]} intensity={1}/>
-            <Suspense fallback={null}>
-
-            <Iphone13/>
-
-            </Suspense>
-           </Canvas> 
-
-           <ProductDesc>
-            <Title>iPhone 13 Pro</Title>
-            <Description>$700</Description>
-            <Button
-           onClick={()=>ChildRef.current.addToCart()}
-            >
-              Add to Cart
-              </Button>
-            </ProductDesc> 
-            
-           </Product>
-
-
-            <Product>
-            <Canvas className='canvas'>
-            <OrbitControls enableZoom={true}/>
-            <ambientLight intensity={3}/>
-            <pointLight position={[-2, 5, 2]} intensity={1}/>
-            <Suspense fallback={null}>
-
-            <Monitor/>
-            
-            </Suspense>
-           </Canvas> 
-           <ProductDesc>
-            <Title>Kogan Curved Monitor</Title>
-            <Description>$400</Description>
-            <Button
-           onClick={()=>ChildRef.current.addToCart()}
-            >
-              Add to Cart
-              </Button>
-            </ProductDesc> 
-            
-           </Product>
-
-           <Product>
-           <Canvas className='canvas'>
-            <OrbitControls enableZoom={true}/>
-            <ambientLight intensity={3}/>
-            <pointLight position={[-2, 5, 2]} intensity={1}/>
-            <Suspense fallback={null}>
-
-            <Smarttv/>
-
-            </Suspense>
-           </Canvas> 
-           <ProductDesc>
-            <Title>Samsung 85 smart</Title>
-            <Description>$3000</Description>
-            <Button
-             onClick={()=>ChildRef.current.addToCart()}
-            >
-              Add to Cart
-              </Button>
-            </ProductDesc> 
-            
-           </Product>
-
-           </ProductContainer>
-
-
-           
-
-           <Advertisment>
-            <div id="div1">
-           <h1>Enjoy 20% off* storewide from Lenovo</h1>
-            <p>Save on tech thats right for you   |   *Ltd time only.Max disc $1000. T&Cs apply.</p>
-            <p>Shop Now →</p>
-           </div>
-          
-           </Advertisment>
-
-           <Catatory >
-        <Title> Used Items  →</Title>
-        </Catatory>
-
-           <ProductContainer>
-
-           <Product>
-           <Canvas className='canvas'>
-            <OrbitControls enableZoom={true}/>
-            <ambientLight intensity={0.5}/>
-            <pointLight position={[-2, 5, 2]} intensity={1}/>
-            <Suspense fallback={null}>
-
-            <Shoes/>
-
-            </Suspense>
-           </Canvas> 
-           <ProductDesc>
-            <Title>Nike Airmax Monster</Title>
-            <Description>$200</Description>
-            <Button
-             onClick={()=>ChildRef.current.addToCart()}
-            >
-              Add to Cart
-              </Button>
-            </ProductDesc> 
-            
-           </Product>
-
-           <Product>
-           <Canvas className='canvas'>
-            <OrbitControls enableZoom={true}/>
-            <ambientLight intensity={3}/>
-            <pointLight position={[-2, 5, 2]} intensity={1}/>
-            <Suspense fallback={null}>
-
-            <Laptop/>
-
-            </Suspense>
-           </Canvas> 
-           <ProductDesc>
-            <Title>Alien Predetor</Title>
-            <Description>$3299</Description>
-            <Button
-            onClick={()=>ChildRef.current.addToCart()}
-            >
-              Add to Cart
-              </Button>
-            </ProductDesc> 
-            
-           </Product>
-
-           <Product>
-          
-           <Canvas className='canvas'>
-            <OrbitControls enableZoom={true}/>
-            <ambientLight intensity={0.5}/>
-            <pointLight position={[-2, 5, 2]} intensity={1}/>
-            <Suspense fallback={null}>
-
-            <Pooltable/>
-
-            </Suspense>
-           </Canvas> 
-           <ProductDesc>
-            <Title>Pool Table</Title>
-            <Description>$400</Description>
-            <Button
-           onClick={()=>ChildRef.current.addToCart()}
-            >
-              Add to Cart
-              </Button>
-            </ProductDesc> 
-           </Product>
-
-           <Product>
-          
-           <Canvas className='canvas'>
-            <OrbitControls enableZoom={true}/>
-            <ambientLight intensity={0.5}/>
-            <pointLight position={[-2, 5, 2]} intensity={1}/>
-            <Suspense fallback={null}>
-
-          <Guitar/>
-
-            </Suspense>
-           </Canvas> 
-           <ProductDesc>
-            <Title>1969 Stratocaster</Title>
-            <Description>$4000</Description>
-            <Button
-             onClick={()=>ChildRef.current.addToCart()}
-            >
-              Add to Cart
-              </Button>
-            </ProductDesc> 
-           </Product>
-            
-
-           </ProductContainer>
-
-           
-           </Body>
-
-          <Chat/>
+        <Title>Card</Title>
+      </Catatory>
+      <Body>
+        <div id="cardElements">
+          {
+            listCard.map((element, index) => {
+              const obj = ProductsParam.find(e => e.id === element.id);
+              return <div className='itemCard' key={index}>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td className='subItemCardPrincipal'>
+                        <h3>{obj.name}</h3>
+                      </td>
+                      <td className="subItemCard">
+                        <MdAttachMoney /> {obj.value}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            })
+          }
+          <div id="TotalShow">
+            <center><h3>Total: {totalShow}</h3></center>
+            <br />
+            <div id="pp-button"></div>
+          </div>
+        </div>
+      </Body>
     </Wrapper>
 
   );
 }
-
-export default Card

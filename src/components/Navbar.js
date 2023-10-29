@@ -17,7 +17,6 @@ const NavScrollExample = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, ()=>({
     clearCard () {
-      console.log('clear');
       setListCard([]);
       setNum(0);
       localStorage.setItem('listData', JSON.stringify([]));

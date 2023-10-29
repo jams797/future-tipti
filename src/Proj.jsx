@@ -502,9 +502,9 @@ export const Proj = () => {
             </ProductDesc> 
            </Product> */}
 
-{
+            {
               ProductsParam.map((element, index) => {
-                if(index<4) return null;
+                if(index<4 || index>=8) return null;
                 return <ItemProduct
                   key={index}
                   id={element.id}
@@ -522,7 +522,7 @@ export const Proj = () => {
            
            </Body>
 
-          <Chat/>
+          {/* <Chat/> */}
     </Wrapper>
 
   );

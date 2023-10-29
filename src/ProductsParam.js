@@ -27,7 +27,7 @@ export const ProductsParam = [
             ambientLight: 2,
             element: <Tv/>,
         },
-        value: 140.00,
+        value: 78.00,
     },
     {
         id: 2,
@@ -37,7 +37,7 @@ export const ProductsParam = [
             ambientLight: 2,
             element: <Iphone13/>,
         },
-        value: 700.00,
+        value: 63.00,
     },
     {
         id: 3,
@@ -47,7 +47,7 @@ export const ProductsParam = [
             ambientLight: 3,
             element: <Monitor/>,
         },
-        value: 400.00,
+        value: 45.00,
     },
     {
         id: 4,
@@ -57,7 +57,7 @@ export const ProductsParam = [
             ambientLight: 3,
             element: <Smarttv/>,
         },
-        value: 3000.00,
+        value: 30.00,
     },
 
 
@@ -69,7 +69,7 @@ export const ProductsParam = [
             ambientLight: 0.5,
             element: <Shoes/>,
         },
-        value: 200.00,
+        value: 20.00,
     },
     {
         id: 6,
@@ -79,7 +79,7 @@ export const ProductsParam = [
             ambientLight: 3,
             element: <Laptop/>,
         },
-        value: 3000.00,
+        value: 40.00,
     },
     {
         id: 7,
@@ -89,7 +89,7 @@ export const ProductsParam = [
             ambientLight: 0.5,
             element: <Pooltable/>,
         },
-        value: 400.00,
+        value: 10.00,
     },
     {
         id: 8,
@@ -99,7 +99,7 @@ export const ProductsParam = [
             ambientLight: 0.5,
             element: <Guitar/>,
         },
-        value: 4000.00,
+        value: 90.00,
     },
 
     {

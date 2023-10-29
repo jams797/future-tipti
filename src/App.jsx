@@ -1,10 +1,12 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import { Router, Link } from '@reach/router';
+
 import { Proj } from './Proj'
 import { Card } from './Card'
 import { IndexPage } from './IndexPage';
 import { Paid } from './Paid';
+import { CategoryProd } from './CategoryProd';
 
 const App = () => {
   return (
@@ -16,13 +18,18 @@ const App = () => {
     //     </Route>
     //   </Routes>
     // </BrowserRouter>
+
     <Router>
-      <Routes>
-        <Route path="/" exact element={<IndexPage />} />
-        <Route path="product" element={<Proj />} />
-        <Route path="card" element={<Card />} />
-        <Route path="paid" element={<Paid />} />
-      </Routes>
+      <div>
+        <Routes>
+          <Route path="/" exact element={<IndexPage />} />
+          <Route path="product" element={<Proj />} />
+          <Route path="card" element={<Card />} />
+          <Route path="paid" element={<Paid />} />
+
+          <Route path="/category/:idCategory" element={<CategoryProd />} />
+        </Routes>
+      </div>
     </Router>
   )
 }

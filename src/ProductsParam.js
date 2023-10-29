@@ -9,12 +9,19 @@ import Guitar from './components/Guitar';
 import Shoes from './components/Shoes';
 import Smarttv from './components/Smarttv';
 import Laptop from './components/Laptop';
+
+import ComidaChina from './components/ComidaChina';
+import JugueteSuperheroe from './components/JugueteSuperheroe';
+
+// import CocaCola from './components/CocaCola';
+
 import {Canvas} from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 
 export const ProductsParam = [
     {
         id: 1,
+        categoryId: 1,
         name: 'Antigüo Nintendo',
         canva: {
             ambientLight: 2,
@@ -24,6 +31,7 @@ export const ProductsParam = [
     },
     {
         id: 2,
+        categoryId: 1,
         name: 'iPhone 13 Pro',
         canva: {
             ambientLight: 2,
@@ -33,6 +41,7 @@ export const ProductsParam = [
     },
     {
         id: 3,
+        categoryId: 1,
         name: 'Kogan Curved Monitor',
         canva: {
             ambientLight: 3,
@@ -42,6 +51,7 @@ export const ProductsParam = [
     },
     {
         id: 4,
+        categoryId: 1,
         name: 'Samsung 85 smart',
         canva: {
             ambientLight: 3,
@@ -53,6 +63,7 @@ export const ProductsParam = [
 
     {
         id: 5,
+        categoryId: 2,
         name: 'Nike Airmax Monster',
         canva: {
             ambientLight: 0.5,
@@ -62,6 +73,7 @@ export const ProductsParam = [
     },
     {
         id: 6,
+        categoryId: 2,
         name: 'Laptop Alien',
         canva: {
             ambientLight: 3,
@@ -71,6 +83,7 @@ export const ProductsParam = [
     },
     {
         id: 7,
+        categoryId: 2,
         name: 'Mesa de billar',
         canva: {
             ambientLight: 0.5,
@@ -80,11 +93,33 @@ export const ProductsParam = [
     },
     {
         id: 8,
+        categoryId: 2,
         name: '1969 Bajo',
         canva: {
             ambientLight: 0.5,
             element: <Guitar/>,
         },
         value: 4000.00,
+    },
+
+    {
+        id: 9,
+        categoryId: 3,
+        name: 'Comida china',
+        canva: {
+            ambientLight: 0.5,
+            element: <ComidaChina/>,
+        },
+        value: 8.00,
+    },
+    {
+        id: 9,
+        categoryId: 4,
+        name: 'Juguete Superheroe',
+        canva: {
+            ambientLight: 0.5,
+            element: <JugueteSuperheroe/>,
+        },
+        value: 7.00,
     },
 ]

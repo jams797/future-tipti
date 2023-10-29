@@ -14,8 +14,10 @@ function IndividualIntervalsExample() {
     <Carousel>
       {
         listBanner.map((element, index) => {
+          console.log(index);
           return <Carousel.Item interval={2000}>
             <img
+              key={index}
               className="d-block w-100"
               src={require('../images/tipti-banner/' + element)}
             />

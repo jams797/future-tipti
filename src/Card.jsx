@@ -12,7 +12,9 @@ import './CardPage.css';
 
 import { ProductsParam } from './ProductsParam';
 
-import 'https://pay.payphonetodoesposible.com/api/button/js?appId=Y6rwoLBYJk6Zr9ay99Sog';
+import backgroundImage from './images/options-paid.gif';
+
+import 'https://pay.payphonetodoesposible.com/api/button/js?appId=S78P75HilUKfMaBJPwcMA';
 
 
 const Wrapper = styled.div`
@@ -243,7 +245,8 @@ export const Card = () => {
     window.payphone.Button({
 
       //token obtenido desde la consola de developer
-      token: "gyqiVsoY7OBDN-eif8FyT2kkebXy0xqp6D4Yp3wGGCnxdxt0GE5WGRHGA0R7GvLnjdJ0SqF-JYPbc0NeXj9XD4whFmeo8OpLtqAoaaRxRaEOxY8QuFf5igDq1SsFwO6ZnBE0th2e8mSSwmzpBxC1pPOu9g3n2DEmkExMU9z0mjYa5ZrM67mCh7jGeauqjk50H1cHfPllVVEpAkycPkANyWKVSMS3p82Jr2bqpNjyJ7-NE7Cn4flTTSow-lOIil8UFPvGJj2P0FOkbXVdaclU9e9TftABLPMxNVl9yhqozbWTfBgobegC5rc8wc-4cKRgNDYt9w",
+      // token: "gyqiVsoY7OBDN-eif8FyT2kkebXy0xqp6D4Yp3wGGCnxdxt0GE5WGRHGA0R7GvLnjdJ0SqF-JYPbc0NeXj9XD4whFmeo8OpLtqAoaaRxRaEOxY8QuFf5igDq1SsFwO6ZnBE0th2e8mSSwmzpBxC1pPOu9g3n2DEmkExMU9z0mjYa5ZrM67mCh7jGeauqjk50H1cHfPllVVEpAkycPkANyWKVSMS3p82Jr2bqpNjyJ7-NE7Cn4flTTSow-lOIil8UFPvGJj2P0FOkbXVdaclU9e9TftABLPMxNVl9yhqozbWTfBgobegC5rc8wc-4cKRgNDYt9w",
+      token: "asS0dANx4bzd0JhpwfjBQbiPP2Lo6t3QLYlLlFDe5vCqcXEcuLUxz2eyGXeHlIT0z5GCJ2lOV0apbIJ_WmsN2iDqNZvFJWC89NxlSkdaF0xWxVlH_kjRE-bXy8DCDks5ILzYNBaa-dMpkT3JJjGhARkk39NNeLTpUupcWKAFSZCr2gmSoV4DLVs0R8tAcTAxwOwqikGFwLwP3vk3444aSA96Dx7JnosSGW3u1sNNvjV9A7jD5juA4znzJZ07z4NKCw4gRg9X85NGagvyuO_A9TkNcNmAzrWzY9MGxBsL_XUoeoqG2JjsD0giXkcOApuiqCLVEQ",
 
       //PARÁMETROS DE CONFIGURACIÓN
       btnHorizontal: true,
@@ -298,11 +301,8 @@ export const Card = () => {
     jsonData.forEach((element, index) => {
       const obj = ProductsParam.find(e => e.id === element.id);
       const sum = obj.value * element.cant;
-      console.log(element);
-      console.log(obj);
-      console.log(sum);
-      setTotalShow(sum);
-      sumT = sum;
+      sumT += sum;
+      setTotalShow(sumT);
     });
 
     loadPayPhone(sumT);
@@ -312,6 +312,15 @@ export const Card = () => {
   useEffect(() => {
     loadData();
   }, []);
+
+  const estiloDeFondo = {
+    // backgroundImage: `url(${backgroundImage})`,
+    // backgroundRepeat: 'no-repeat',
+    // backgroundPosition: 'right center',
+    background: `url(${backgroundImage}) right center no-repeat, #f1f1f1`,
+    backgroundSize: 'contain',
+    padding: '10px',
+  };
 
 
   return (
@@ -345,7 +354,9 @@ export const Card = () => {
           <div id="TotalShow">
             <center><h3>Total: {totalShow}</h3></center>
             <br />
-            <div id="pp-button"></div>
+            <div style={estiloDeFondo}>
+              <div id="pp-button"></div>
+            </div>
           </div>
         </div>
       </Body>

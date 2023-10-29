@@ -18,6 +18,8 @@ import Shoes from './components/Shoes';
 import Smarttv from './components/Smarttv';
 import Laptop from './components/Laptop';
 
+import { ProductsParam } from './ProductsParam';
+
 
 const Wrapper = styled.div`
 position: relative;
@@ -160,8 +162,9 @@ padding: 20px 20px 20px;
 const Advertisment = styled.div`
 margin-top:40px;
 padding: 20px 20px 20px;
-background: #FFD1DD;
+background: #ff901275;
 width: 100%;
+border-radius: 10px;
 
 
 
@@ -239,54 +242,46 @@ export const Proj = () => {
 
   const ChildRef = useRef();
 
- 
+  const ItemProduct = ({intensity, name, value, canva, id}) => {
+    return (
+      <Product>
+        <Canvas className='canvas'>
+        <OrbitControls enableZoom={true}/>
+        <ambientLight intensity={intensity}/>
+        <pointLight position={[-2, 5, 2]} intensity={1}/>
+        <Suspense fallback={null}>
 
+        {canva}
+
+        </Suspense>
+        </Canvas> 
+        <ProductDesc>
+        <Title>{name}</Title>
+        <Description>${value}</Description>
+        <Button
+          onClick={()=>ChildRef.current.addToCart(id)}
+        >
+          Añadir al carrito
+          </Button>
+        </ProductDesc> 
+        
+      </Product>
+    );
+  };
   
   return (
     <Wrapper> 
      
         <Navbar ref={ChildRef}/>
       <Carousel/>
-        <TextSection/>
-
-        <Catatory>
-        <Title>Shop by Catagory  →</Title>
-        </Catatory>
-      <CatagoryContainer>
-        <CatagoryItem>
-        <img src={require('../src/images/Appliances.png')} alt="Appliance" />
-       
-        </CatagoryItem>
-        <CatagoryItem>
-        <img src={require('../src/images/Alcohol.png')} alt="Alcohol" />
-        </CatagoryItem>
-        <CatagoryItem>
-        <img src={require('../src/images/Ellipse 1.png')} alt="Dress" />
-        </CatagoryItem>
-        <CatagoryItem>
-        <img src={require('../src/images/Baby.png')} alt="Dress" />
-        </CatagoryItem>
-        <CatagoryItem>
-        <img src={require('../src/images/Headphone.png')} alt="Dress" />
-        </CatagoryItem>
-        <CatagoryItem>
-        <img src={require('../src/images/Shoes.png')} alt="Dress" />
-        </CatagoryItem>
-        <CatagoryItem>
-        <img src={require('../src/images/Ball.png')} alt="Dress" />
-        </CatagoryItem>
-
-     
-
-      </CatagoryContainer>
       
       <Catatory>
-        <Title>Electronics  → </Title>
+        <Title>Productos nuevos  → </Title>
         </Catatory>
         <Body>
       
         <ProductContainer>
-          <Product>
+          {/* <Product>
            <Canvas className='canvas'>
             <OrbitControls enableZoom={true}/>
             <ambientLight intensity={2}/>
@@ -379,7 +374,21 @@ export const Proj = () => {
               </Button>
             </ProductDesc> 
             
-           </Product>
+           </Product> */}
+
+           {
+              ProductsParam.map((element, index) => {
+                if(index>=4) return null;
+                return <ItemProduct
+                  key={index}
+                  id={element.id}
+                  intensity={element.canva.intensity}
+                  name={element.name}
+                  value={element.value}
+                  canva={element.canva.element}
+                />
+              })
+           }
 
            </ProductContainer>
 
@@ -388,20 +397,20 @@ export const Proj = () => {
 
            <Advertisment>
             <div id="div1">
-           <h1>Enjoy 20% off* storewide from Lenovo</h1>
-            <p>Save on tech thats right for you   |   *Ltd time only.Max disc $1000. T&Cs apply.</p>
-            <p>Shop Now →</p>
+           <h1>Desde el 20 Nov, aprovecha nuestras promociones</h1>
+            <p>Hasta el 30% de descuento en nuestros productos.</p>
+            <p>Compra ahora →</p>
            </div>
           
            </Advertisment>
 
            <Catatory >
-        <Title> Used Items  →</Title>
+        <Title> Productos  →</Title>
         </Catatory>
 
            <ProductContainer>
 
-           <Product>
+           {/* <Product>
            <Canvas className='canvas'>
             <OrbitControls enableZoom={true}/>
             <ambientLight intensity={0.5}/>
@@ -491,7 +500,21 @@ export const Proj = () => {
               Add to Cart
               </Button>
             </ProductDesc> 
-           </Product>
+           </Product> */}
+
+{
+              ProductsParam.map((element, index) => {
+                if(index<4) return null;
+                return <ItemProduct
+                  key={index}
+                  id={element.id}
+                  intensity={element.canva.intensity}
+                  name={element.name}
+                  value={element.value}
+                  canva={element.canva.element}
+                />
+              })
+           }
             
 
            </ProductContainer>

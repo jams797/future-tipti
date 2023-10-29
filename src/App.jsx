@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Proj } from './Proj'
 import { Card } from './Card'
 import { IndexPage } from './IndexPage';
+import { Paid } from './Paid';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/" exact element={<IndexPage />} />
         <Route path="product" element={<Proj />} />
         <Route path="card" element={<Card />} />
+        <Route path="paid" element={<Paid />} />
       </Routes>
     </Router>
   )

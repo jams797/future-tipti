@@ -8,6 +8,7 @@
     padding: 15px;
     border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
 }
 
 #TotalShow{
@@ -23,4 +24,10 @@
 
 #pp-button{
     text-align: center;
+}
+
+.styleTitle {
+    font-family: system-ui;
+    color: #ff9100;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }

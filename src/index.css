@@ -11,3 +11,8 @@
   text-align: center;
 }
 
+.canvas-mall {
+    position: fixed !important;
+    inset: 0 !important;
+}
+

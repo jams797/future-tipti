@@ -1,6 +1,7 @@
 import React, {useRef} from 'react'
 import Navbar from './components/Navbar';
 import styled from 'styled-components';
+import { HomeScene } from './scenes/HomeScene';
 
 const Wrapper = styled.div`
 position: relative;
@@ -218,11 +219,11 @@ export const IndexPage = () => {
     const ChildRef = useRef();
 
   return (
-    <Wrapper>
-      <Navbar ref={ChildRef} />
-      <Body>
-        <div>IndexPage</div>
-      </Body>
-    </Wrapper>
-  )
+      <Wrapper>
+          <Navbar ref={ChildRef} />
+          <Body>
+              <HomeScene />
+          </Body>
+      </Wrapper>
+  );
 }

@@ -221,9 +221,7 @@ export const IndexPage = () => {
   return (
       <Wrapper>
           <Navbar ref={ChildRef} />
-          <Body>
-              <HomeScene />
-          </Body>
+          <HomeScene />
       </Wrapper>
   );
 }

@@ -35,7 +35,7 @@ const CanvasMall = () => {
                     receiveShadow
                     position={[-24.2, axiWallY, -12]}
                     onClick={() => {
-                        handleClick('product');
+                        handleClick('category/2');
                     }}>
                     <boxGeometry args={[1, 3.5, 5.5]} />
                     <meshStandardMaterial color="black" envMapIntensity={0.5} roughness={0.2} metalness={0.8} />
@@ -48,7 +48,7 @@ const CanvasMall = () => {
                     receiveShadow
                     position={[-16.4, axiWallY, 0]}
                     onClick={() => {
-                        handleClick('product');
+                        handleClick('category/1');
                     }}>
                     <boxGeometry args={[5.5, 3.5, 1]} />
                     <meshStandardMaterial color="black" envMapIntensity={0.5} roughness={0.2} metalness={0.8} />
@@ -61,7 +61,7 @@ const CanvasMall = () => {
                     receiveShadow
                     position={[0, axiWallY, 0]}
                     onClick={() => {
-                        handleClick('product');
+                        handleClick('category/3');
                     }}>
                     <boxGeometry args={[5.5, 3.5, 1]} />
                     <meshStandardMaterial color="black" envMapIntensity={0.5} roughness={0.2} metalness={0.8} />
@@ -74,7 +74,7 @@ const CanvasMall = () => {
                     receiveShadow
                     position={[18.4, axiWallY, 0]}
                     onClick={() => {
-                        handleClick('product');
+                        handleClick('category/1');
                     }}>
                     <boxGeometry args={[5.5, 3.5, 1]} />
                     <meshStandardMaterial color="black" envMapIntensity={0.5} roughness={0.2} metalness={0.8} />
@@ -87,7 +87,7 @@ const CanvasMall = () => {
                     receiveShadow
                     position={[36.4, axiWallY, 0]}
                     onClick={() => {
-                        handleClick('product');
+                        handleClick('category/1');
                     }}>
                     <boxGeometry args={[5.5, 3.5, 1]} />
                     <meshStandardMaterial color="black" envMapIntensity={0.5} roughness={0.2} metalness={0.8} />
@@ -100,7 +100,7 @@ const CanvasMall = () => {
                     receiveShadow
                     position={[-16.4, axiWallY, axiWallZBack]}
                     onClick={() => {
-                        handleClick('product');
+                        handleClick('category/2');
                     }}>
                     <boxGeometry args={[5.5, 3.5, 1]} />
                     <meshStandardMaterial color="black" envMapIntensity={0.5} roughness={0.2} metalness={0.8} />
@@ -113,7 +113,7 @@ const CanvasMall = () => {
                     receiveShadow
                     position={[0, axiWallY, axiWallZBack]}
                     onClick={() => {
-                        handleClick('product');
+                        handleClick('category/1');
                     }}>
                     <boxGeometry args={[5.5, 3.5, 1]} />
                     <meshStandardMaterial color="black" envMapIntensity={0.5} roughness={0.2} metalness={0.8} />
@@ -126,7 +126,7 @@ const CanvasMall = () => {
                     receiveShadow
                     position={[18.4, axiWallY, axiWallZBack]}
                     onClick={() => {
-                        handleClick('product');
+                        handleClick('category/4');
                     }}>
                     <boxGeometry args={[5.5, 3.5, 1]} />
                     <meshStandardMaterial color="black" envMapIntensity={0.5} roughness={0.2} metalness={0.8} />
@@ -139,7 +139,7 @@ const CanvasMall = () => {
                     receiveShadow
                     position={[36.4, axiWallY, axiWallZBack]}
                     onClick={() => {
-                        handleClick('product');
+                        handleClick('category/3');
                     }}>
                     <boxGeometry args={[5.5, 3.5, 1]} />
                     <meshStandardMaterial color="black" envMapIntensity={0.5} roughness={0.2} metalness={0.8} />
